@@ -38,3 +38,28 @@ buildScan {
     termsOfServiceAgree = "yes"
     publishAlways()
 }
+
+subprojects {
+    tasks.whenTaskAdded {
+        if (name == "test") enabled = false
+    }
+}
+
+tasks.create("install") {
+    group = "custom"
+    description = "Install the app"
+    dependsOn(":app:installDebug")
+}
+
+// TODO: remove :app:test
+tasks.create("test") {
+    group = "custom"
+    description = "Run the unit tests"
+    dependsOn(":app:testDebugUnitTest")
+}
+
+tasks.create("hello") {
+    group = "custom"
+    description = "Empty Hello World task, useful to debug build problems"
+}
+
