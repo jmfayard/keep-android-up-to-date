@@ -62,4 +62,3 @@ tasks.create("hello") {
     group = "custom"
     description = "Empty Hello World task, useful to debug build problems"
 }
-

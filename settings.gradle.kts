@@ -1,5 +1,7 @@
 pluginManagement {
     repositories {
+        mavenLocal()
+        gradlePluginPortal()
     }
 
     val resolutionStrategyConfig: String? by extra
