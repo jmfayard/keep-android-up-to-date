@@ -13,11 +13,11 @@ buildscript {
 plugins {
     // ./gradlew --scan $TASKNAME 
     // see https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
-    id("com.gradle.build-scan").version("2.4.2")
+    id("com.gradle.build-scan")
     // :refreshVersions see https://github.com/jmfayard/buildSrcVersions/issues/77    
-    id("de.fayard.buildSrcVersions").version("0.6.1")
+    id("de.fayard.buildSrcVersions")
     //  https://github.com/LouisCAD/Splitties/tree/develop/plugin
-    id("com.louiscad.splitties") version "0.0.1" 
+    id("com.louiscad.splitties")
 }
 
 
