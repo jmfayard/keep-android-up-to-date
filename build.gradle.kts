@@ -1,3 +1,8 @@
+import com.louiscad.splitties.AndroidX
+import com.louiscad.splitties.Google
+import com.louiscad.splitties.Kotlin
+import com.louiscad.splitties.Testing
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
@@ -27,7 +32,6 @@ allprojects {
         jcenter()
     }
 }
-
 
 buildSrcVersions {
   // Documented at https://github.com/jmfayard/buildSrcVersions/issues/53
