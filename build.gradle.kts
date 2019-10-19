@@ -24,14 +24,17 @@ plugins {
     //  https://github.com/LouisCAD/Splitties/tree/develop/plugin
     id("com.louiscad.splitties")
 }
-
-
 allprojects {
     repositories {
         google()
         jcenter()
     }
 }
+
+fun envOrProperty(name: String, default: String): String =
+    System.getenv(name.toUpperCase().replace(".", "_"))
+        ?: findProperty(name.toLowerCase().replace("_", ".")) as? String
+        ?: default
 
 buildSrcVersions {
   // Documented at https://github.com/jmfayard/buildSrcVersions/issues/53
@@ -65,4 +68,8 @@ tasks.create("test") {
 tasks.create("hello") {
     group = "custom"
     description = "Empty Hello World task, useful to debug build problems"
+}
+
+tasks.withType<Wrapper> {
+    gradleVersion = envOrProperty("version.gradleLatestVersion", gradle.gradleVersion)
 }
