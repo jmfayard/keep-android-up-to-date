@@ -27,12 +27,20 @@ android {
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
   }
+}
+android {
   buildTypes {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+}
+
+
+android.compileOptions {
+  sourceCompatibility 1.8
+  targetCompatibility 1.8
 }
 
 dependencies {
@@ -46,8 +54,9 @@ dependencies {
   testImplementation(Testing.junit4)
   androidTestImplementation(AndroidX.test.core)
   androidTestImplementation(AndroidX.archCore.testing)
-  androidTestImplementation(Testing.mockitoKotlin)
+  androidTestImplementation(Testing.mockitoCore)
   androidTestImplementation(Testing.mockitoAndroid)
+  androidTestImplementation(Testing.mockitoKotlin)
   androidTestImplementation(AndroidX.test.runner)
   androidTestImplementation(AndroidX.test.rules)
   androidTestImplementation(AndroidX.test.espresso.core)
