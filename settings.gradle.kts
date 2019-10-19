@@ -14,5 +14,5 @@ pluginManagement {
         }
     }
 }
-rootProject.name = "Update legacy rootProject"
+rootProject.name = "legacy-android-project"
 include(":app")
