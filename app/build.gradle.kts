@@ -7,41 +7,17 @@ plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
   id("org.jetbrains.kotlin.kapt")
+  "kotlin-android-extensions"
 }
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 
 repositories {
   google()
   jcenter()
   mavenCentral()
 }
+apply(from = "android.gradle")
 
-android {
-  compileSdkVersion 28
-  defaultConfig {
-    applicationId "com.raywenderlich.android.smallvictories"
-    minSdkVersion 19
-    targetSdkVersion 28
-    versionCode 1
-    versionName "1.0"
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    vectorDrawables.useSupportLibrary = true
-  }
-}
-android {
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-  }
-}
-
-
-android.compileOptions {
-  sourceCompatibility 1.8
-  targetCompatibility 1.8
-}
 
 dependencies {
   implementation(Kotlin.stdlibJdk7)
