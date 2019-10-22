@@ -7,9 +7,8 @@ plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
   id("org.jetbrains.kotlin.kapt")
-  "kotlin-android-extensions"
+  id("kotlin-android-extensions")
 }
-//apply plugin: 'kotlin-android-extensions'
 
 repositories {
   google()
