@@ -9,16 +9,48 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
 }
 
+// This app is doing too much complex stuff with Android build variants
+// https://developer.android.com/studio/build/build-variants
+android {
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+        staging {
+            initWith debug
+            manifestPlaceholders = [hostName:"internal.example.com"]
+            applicationIdSuffix ".debugStaging"
+        }
+    }
+
+    flavorDimensions "api", "mode"
+    productFlavors {
+        demo {
+            dimension "mode"
+        }
+
+        full {
+            dimension "mode"
+        }
+        minApi24 {
+            dimension "api"
+            minSdkVersion 24
+        }
+        minApi21 {
+            dimension "api"
+            minSdkVersion 24
+        }
+    }
+}

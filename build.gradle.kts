@@ -46,23 +46,15 @@ buildScan {
     publishAlways()
 }
 
-subprojects {
-    tasks.whenTaskAdded {
-        if (name == "test") enabled = false
-    }
+tasks.create("test") {
+    group = "custom"
+    description = "Run the unit tests"
 }
 
 tasks.create("install") {
     group = "custom"
     description = "Install the app"
     dependsOn(":app:installDebug")
-}
-
-// TODO: remove :app:test
-tasks.create("test") {
-    group = "custom"
-    description = "Run the unit tests"
-    dependsOn(":app:testDebugUnitTest")
 }
 
 tasks.create("hello") {
