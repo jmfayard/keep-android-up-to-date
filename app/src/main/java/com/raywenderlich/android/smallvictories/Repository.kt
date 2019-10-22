@@ -51,7 +51,7 @@ open class Repository(context: Context) : VictoryRepository {
   }
 
   override fun getVictoryTitle(): String {
-    return sharedPreferences.getString(KEY_VICTORY_TITLE, "Victory title")
+    return sharedPreferences.getString(KEY_VICTORY_TITLE, "Victory title")!!
   }
 
   override fun setVictoryCount(count: Int) {
