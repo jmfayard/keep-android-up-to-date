@@ -5,17 +5,19 @@ import com.louiscad.splitties.Kotlin
 
 plugins {
   id("com.android.application")
+  id("com.louiscad.splitties")
   id("org.jetbrains.kotlin.android")
-  id("org.jetbrains.kotlin.kapt")
   id("kotlin-android-extensions")
+  id("org.jetbrains.kotlin.kapt")
 }
+
+apply(from = "android.gradle")
 
 repositories {
   google()
   jcenter()
   mavenCentral()
 }
-apply(from = "android.gradle")
 
 
 dependencies {

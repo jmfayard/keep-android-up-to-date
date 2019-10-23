@@ -10,8 +10,4 @@ repositories {
 }
 
 val properties = Properties()
-properties.load(file("../gradle.properties").reader())
-dependencies {
-    compileOnly(gradleKotlinDsl())
-    implementation("com.android.tools.build:gradle:" + properties.getProperty("version.com.android.tools.build..gradle"))
-}
+properties.load(file("../versions.properties").reader())
