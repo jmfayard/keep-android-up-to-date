@@ -18,11 +18,11 @@ buildscript {
 plugins {
     // ./gradlew --scan $TASKNAME 
     // see https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
-    id("com.gradle.build-scan")
+    `build-scan`
     // :refreshVersions see https://github.com/jmfayard/buildSrcVersions/issues/77    
-    id("de.fayard.buildSrcVersions")
+    id("de.fayard.refreshVersions").version("0.8.0")
     //  https://github.com/LouisCAD/Splitties/tree/develop/plugin
-    id("com.louiscad.splitties")
+    id("com.louiscad.splitties").version("0.1.3")
 }
 allprojects {
     repositories {
@@ -36,8 +36,9 @@ fun envOrProperty(name: String, default: String): String =
         ?: findProperty(name.toLowerCase().replace("_", ".")) as? String
         ?: default
 
-buildSrcVersions {
+refreshVersions {
   // Documented at https://github.com/jmfayard/buildSrcVersions/issues/53
+    propertiesFile = "versions.properties"
 }
 
 buildScan {

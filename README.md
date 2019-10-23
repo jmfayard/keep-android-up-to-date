@@ -38,7 +38,7 @@
 
 ## Links
 
-
+- https://issuetracker.google.com/issues/64551265
 - Gradle Tips and Tricks for Android https://raywenderlich.com/5532-gradle-tips-and-tricks-for-android
 - Domain-Specific Languages In Kotlin: Getting Started https://raywenderlich.com/2780058-domain-specific-languages-in-kotlin-getting-started
 - Gradle+Kotlin samples https://github.com/gradle/kotlin-dsl-samples

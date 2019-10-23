@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     `kotlin-dsl`
 }
@@ -6,9 +8,10 @@ repositories {
     jcenter()
     mavenCentral()
 }
-val kotlinVersion = "1.3.50" // Don't forget to update in Dependencies.kt too!
 
+val properties = Properties()
+properties.load(file("../gradle.properties").reader())
 dependencies {
     compileOnly(gradleKotlinDsl())
-    implementation("com.android.tools.build:gradle:3.5.1")
+    implementation("com.android.tools.build:gradle:" + properties.getProperty("version.com.android.tools.build..gradle"))
 }
