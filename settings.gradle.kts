@@ -5,6 +5,6 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-apply(from = "plugins.gradle.kts")
+apply(from = "gradle/plugins.gradle.kts")
 rootProject.name = "legacy-android-project"
 include(":app")

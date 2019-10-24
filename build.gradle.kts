@@ -4,9 +4,9 @@ plugins {
     // see https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
     `build-scan`
     // :refreshVersions see https://github.com/jmfayard/buildSrcVersions/issues/77    
-    id("de.fayard.refreshVersions").version("0.8.0")
-    //  https://github.com/LouisCAD/Splitties/tree/develop/plugin
-    id("com.louiscad.splitties").version("0.1.3")
+    id("de.fayard.refreshVersions")
+    id("com.louiscad.splitties")
+
 }
 allprojects {
     repositories {
