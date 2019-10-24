@@ -1,3 +1,4 @@
+import de.fayard.OrderBy
 
 plugins {
     // ./gradlew --scan $TASKNAME 
@@ -15,14 +16,9 @@ allprojects {
     }
 }
 
-fun envOrProperty(name: String, default: String): String =
-    System.getenv(name.toUpperCase().replace(".", "_"))
-        ?: findProperty(name.toLowerCase().replace("_", ".")) as? String
-        ?: default
-
 refreshVersions {
-  // Documented at https://github.com/jmfayard/buildSrcVersions/issues/53
-    propertiesFile = "versions.properties"
+    useFqdnFor("espresso-core", "core-testing", "appcompat", "material", "aapt2", "constraintlayout", "lint-gradle")
+    orderBy = OrderBy.GROUP_AND_ALPHABETICAL
 }
 
 buildScan {
@@ -31,7 +27,7 @@ buildScan {
     publishAlways()
 }
 
-tasks.create("test") {
+tasks.create("tests") {
     group = "custom"
     description = "Run the unit tests"
 }
