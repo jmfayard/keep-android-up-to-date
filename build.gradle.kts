@@ -1,10 +1,7 @@
 import de.fayard.OrderBy
 
 plugins {
-    // ./gradlew --scan $TASKNAME 
-    // see https://dev.to/jmfayard/the-one-gradle-trick-that-supersedes-all-the-others-5bpg
     `build-scan`
-    // :refreshVersions see https://github.com/jmfayard/buildSrcVersions/issues/77    
     id("de.fayard.refreshVersions")
     id("com.louiscad.splitties")
 
@@ -27,18 +24,6 @@ buildScan {
     publishAlways()
 }
 
-tasks.register("tests") {
-    group = "custom"
-    description = "Run the unit tests"
-    dependsOn(":app:testDebugUnitTest")
-}
-
-tasks.register("install") {
-    group = "custom"
-    description = "Install the app"
-    dependsOn(":app:installDebug")
-}
-
 tasks.register("hello") {
     group = "custom"
     description = "Empty Hello World task, useful to debug build problems"
@@ -50,11 +35,29 @@ tasks.register<Delete>("clean") {
     delete = setOf(".gradle", ".idea", "**.iml", "build", "app/build")
 }
 
+tasks.register("tests") {
+    dependsOn(":app:testDebugUnitTest")
+    group = "custom"
+    description = "Run the unit tests"
+}
+
+tasks.register("install") {
+    dependsOn(":app:installDebug")
+    group = "custom"
+    description = "Install the app"
+}
+
+tasks.register("androidTests") {
+    dependsOn(":app:connectedDebugAndroidTest")
+    group = "custom"
+    description = "Run Android instrumention tets"
+}
+
 tasks.register<Copy>("apk") {
+    dependsOn(":app:assembleRelease")
     group = "custom"
     description = "Build a release APK"
     val apkName = "${project.name}-versionCode-${findProperty("versionCode")}.apk"
-    dependsOn(":app:assembleRelease")
     from("app/build/outputs/apk/release") {
         include("app-released-unsigned.apk")
         rename(".*", apkName)
