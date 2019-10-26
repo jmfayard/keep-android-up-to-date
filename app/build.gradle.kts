@@ -1,7 +1,4 @@
-import com.louiscad.splitties.AndroidX
-import com.louiscad.splitties.Google
-import com.louiscad.splitties.Testing
-import com.louiscad.splitties.Kotlin
+import com.louiscad.splitties.*
 
 plugins {
   id("com.android.application")
@@ -21,6 +18,7 @@ repositories {
 
 
 dependencies {
+  implementation(Splitties.preferences)
   implementation(Kotlin.stdlibJdk7)
   implementation(AndroidX.appCompat)
   implementation(AndroidX.constraintLayout)

@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     viewModel.viewState.observe(this, Observer { it ->
       it?.let { render(it) }
     })
-    viewModel.repository = SharedPreferencesRepository(this)
+    viewModel.repository = SharedPreferencesRepository
     viewModel.initialize()
 
     fab.setOnClickListener {
