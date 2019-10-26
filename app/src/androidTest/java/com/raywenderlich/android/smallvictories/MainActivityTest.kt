@@ -31,14 +31,14 @@
 package com.raywenderlich.android.smallvictories
 
 
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.*
-import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.filters.LargeTest
-import androidx.test.rule.ActivityTestRule
-import androidx.test.runner.AndroidJUnit4
+import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.action.ViewActions.*
+import android.support.test.espresso.assertion.ViewAssertions.doesNotExist
+import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.filters.LargeTest
+import android.support.test.rule.ActivityTestRule
+import android.support.test.runner.AndroidJUnit4
 import android.widget.EditText
 import android.widget.TextView
 import org.hamcrest.CoreMatchers.allOf
@@ -112,6 +112,24 @@ class MainActivityTest {
         .perform(click())
 
     onView(allOf(withId(R.id.textVictoryCount), withText((previousCount + 1).toString())))
+        .check(matches(isDisplayed()))
+  }
+
+  @Test
+  fun selectingResetResetsCountView() {
+    onView(withId(R.id.action_reset))
+        .perform(click())
+
+    onView(allOf(withId(R.id.textVictoryCount), withText("0")))
+        .check(matches(isDisplayed()))
+  }
+
+  @Test
+  fun selectingResetResetsTitleView() {
+    onView(withId(R.id.action_reset))
+        .perform(click())
+
+    onView(allOf(withId(R.id.textVictoryTitle), withText("Victory title")))
         .check(matches(isDisplayed()))
   }
 }

@@ -28,41 +28,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.raywenderlich.android.smallvictories
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import android.content.Context
 
+open class Repository(context: Context) : VictoryRepository {
+  companion object {
 
-class VictoryViewModel : ViewModel() {
-
-  val viewState: MutableLiveData<VictoryUiModel> = MutableLiveData()
-  lateinit var repository: VictoryRepository
-
-  fun initialize() {
-    val (title, count) = repository.getVictoryTitleAndCount()
-    viewState.value = VictoryUiModel.TitleUpdated(title)
-    viewState.value = VictoryUiModel.CountUpdated(count)
+    private const val PACKAGE_NAME = "com.raywenderlich.android.smallvictories"
+    private const val KEY_VICTORY_TITLE = "victory_title"
+    private const val KEY_VICTORY_COUNT = "victory_count"
   }
 
-  fun setVictoryTitle(title: String) {
-    repository.setVictoryTitle(title)
-    viewState.value = VictoryUiModel.TitleUpdated(title)
+  private val sharedPreferences = context.getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE)
+
+  override fun getVictoryTitleAndCount(): Pair<String, Int> {
+    return Pair(getVictoryTitle(), getVictoryCount())
   }
 
-  fun incrementVictoryCount() {
-    val newCount = repository.getVictoryCount() + 1
-    repository.setVictoryCount(newCount)
-    viewState.value = VictoryUiModel.CountUpdated(newCount)
+  override fun setVictoryTitle(title: String) {
+    sharedPreferences.edit().putString(KEY_VICTORY_TITLE, title).apply()
   }
 
-  fun reset() {
-    repository.clear()
+  override fun getVictoryTitle(): String {
+    return sharedPreferences.getString(KEY_VICTORY_TITLE, "Victory title")
+  }
 
-    val (title, count) = repository.getVictoryTitleAndCount()
-    viewState.value = VictoryUiModel.CountUpdated(count)
-    viewState.value = VictoryUiModel.TitleUpdated(title)
+  override fun setVictoryCount(count: Int) {
+    sharedPreferences.edit().putInt(KEY_VICTORY_COUNT, count).apply()
+  }
+
+  override fun getVictoryCount(): Int {
+    return sharedPreferences.getInt(KEY_VICTORY_COUNT, 0)
+  }
+
+  override fun clear() {
+    sharedPreferences.edit().clear().apply()
   }
 }
-
