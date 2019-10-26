@@ -31,12 +31,12 @@
 
 package com.raywenderlich.android.smallvictories
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.res.Resources
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
+import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
@@ -46,24 +46,24 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-  val viewModel: VictoryViewModel
-    get() = ViewModelProviders.of(this).get(VictoryViewModel::class.java)
+  private lateinit var viewModel: VictoryViewModel
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     setSupportActionBar(toolbar)
 
+    viewModel = ViewModelProviders.of(this).get(VictoryViewModel::class.java)
     viewModel.viewState.observe(this, Observer { it ->
       it?.let { render(it) }
     })
-    viewModel.repository = SharedPreferencesRepository
+    viewModel.repository = Repository(this)
     viewModel.initialize()
 
     fab.setOnClickListener {
       viewModel.incrementVictoryCount()
     }
-    textVictoryTitle.setOnClickListener { showVictoryTitleDialog(viewModel) }
+    textVictoryTitle.setOnClickListener { showVictoryTitleDialog() }
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
     }
   }
 
-  private fun showVictoryTitleDialog(viewModel: VictoryViewModel) {
+  private fun showVictoryTitleDialog() {
     AlertDialog.Builder(this).apply {
       setTitle(getString(R.string.dialog_title))
 

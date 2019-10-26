@@ -30,26 +30,11 @@
  */
 package com.raywenderlich.android.smallvictories
 
-import android.content.Context
-import splitties.experimental.ExperimentalSplittiesApi
-import splitties.preferences.Preferences
-
 interface VictoryRepository {
-  var victoryTitle: String
-  var victoryCount: Int
+  fun getVictoryTitleAndCount(): Pair<String, Int>
+  fun setVictoryTitle(title: String)
+  fun getVictoryTitle(): String
+  fun setVictoryCount(count: Int)
+  fun getVictoryCount(): Int
   fun clear()
-}
-
-@ExperimentalSplittiesApi
-object SharedPreferencesRepository : VictoryRepository, Preferences(BuildConfig.APPLICATION_ID) {
-  private val defaultTitle = "Project upgraded!"
-
-  override var victoryTitle: String by stringPref(defaultTitle)
-  override var victoryCount: Int by intPref(0)
-
-  override fun clear() {
-    victoryTitle = defaultTitle
-    victoryCount = 0
-  }
-
 }
