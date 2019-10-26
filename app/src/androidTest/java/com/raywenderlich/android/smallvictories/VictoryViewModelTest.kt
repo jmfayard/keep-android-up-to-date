@@ -121,18 +121,18 @@ class VictoryViewModelTest {
     stubVictoryRepositoryGetVictoryTitle(titleAndCount.first)
     stubVictoryRepositoryGetVictoryCount(titleAndCount.second)
     whenever(mockVictoryRepository.victoryTitle)
-      .thenReturn(titleAndCount.first)
+        .thenReturn(titleAndCount.first)
     whenever(mockVictoryRepository.victoryCount)
-      .thenReturn(titleAndCount.second)
+        .thenReturn(titleAndCount.second)
   }
 
   private fun stubVictoryRepositoryGetVictoryTitle(title: String) {
     whenever(mockVictoryRepository.victoryTitle)
-      .thenReturn(title)
+        .thenReturn(title)
   }
 
   private fun stubVictoryRepositoryGetVictoryCount(count: Int) {
     whenever(mockVictoryRepository.victoryCount)
-      .thenReturn(count)
+        .thenReturn(count)
   }
 }
