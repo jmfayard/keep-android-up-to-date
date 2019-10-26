@@ -1,8 +1,8 @@
 pluginManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-    }
+  repositories {
+    google()
+    gradlePluginPortal()
+  }
 }
 apply(from = "gradle/plugins.gradle.kts")
 rootProject.name = "legacy-android-project"

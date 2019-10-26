@@ -122,7 +122,7 @@ class VictoryViewModelTest {
     stubVictoryRepositoryGetVictoryTitle(titleAndCount.first)
     stubVictoryRepositoryGetVictoryCount(titleAndCount.second)
     whenever(mockVictoryRepository.victoryTitle)
-      .thenReturn(titleAndCount.first)
+        .thenReturn(titleAndCount.first)
     whenever(mockVictoryRepository.victoryCount)
         .thenReturn(titleAndCount.second)
   }
