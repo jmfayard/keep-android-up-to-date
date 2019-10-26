@@ -79,7 +79,7 @@ class VictoryViewModelTest {
     val title = "New title"
     viewModel.setVictoryTitle(title)
 
-    verify(mockVictoryRepository).setVictoryTitle(title)
+    verify(mockVictoryRepository).victoryTitle = title
   }
 
   @Test
@@ -95,7 +95,7 @@ class VictoryViewModelTest {
     stubVictoryRepositoryGetVictoryCount(5)
     viewModel.incrementVictoryCount()
 
-    verify(mockVictoryRepository).getVictoryCount()
+    verify(mockVictoryRepository).victoryCount
   }
 
   @Test
@@ -104,7 +104,7 @@ class VictoryViewModelTest {
     stubVictoryRepositoryGetVictoryCount(previousCount)
     viewModel.incrementVictoryCount()
 
-    verify(mockVictoryRepository).setVictoryCount(previousCount + 1)
+    verify(mockVictoryRepository).victoryCount = (previousCount + 1)
   }
 
   @Test
@@ -116,50 +116,23 @@ class VictoryViewModelTest {
     verify(viewStateObserver).onChanged(VictoryUiModel.CountUpdated(previousCount + 1))
   }
 
-  @Test
-  fun resetCallsRepository() {
-    val title = "New title"
-    val count = 5
-    stubVictoryRepositoryGetVictoryTitleAndCount(Pair(title, count))
-    viewModel.reset()
-
-    verify(mockVictoryRepository).clear()
-  }
-
-  @Test
-  fun resetReturnsTitle() {
-    val title = "New title"
-    val count = 5
-    stubVictoryRepositoryGetVictoryTitleAndCount(Pair(title, count))
-    viewModel.reset()
-
-    verify(viewStateObserver).onChanged(VictoryUiModel.TitleUpdated(title))
-  }
-
-  @Test
-  fun resetReturnsCount() {
-    val title = "New title"
-    val count = 5
-    stubVictoryRepositoryGetVictoryTitleAndCount(Pair(title, count))
-    viewModel.reset()
-
-    verify(viewStateObserver).onChanged(VictoryUiModel.CountUpdated(count))
-  }
 
   private fun stubVictoryRepositoryGetVictoryTitleAndCount(titleAndCount: Pair<String, Int>) {
     stubVictoryRepositoryGetVictoryTitle(titleAndCount.first)
     stubVictoryRepositoryGetVictoryCount(titleAndCount.second)
-    whenever(mockVictoryRepository.getVictoryTitleAndCount())
-        .thenReturn(titleAndCount)
+    whenever(mockVictoryRepository.victoryTitle)
+      .thenReturn(titleAndCount.first)
+    whenever(mockVictoryRepository.victoryCount)
+      .thenReturn(titleAndCount.second)
   }
 
   private fun stubVictoryRepositoryGetVictoryTitle(title: String) {
-    whenever(mockVictoryRepository.getVictoryTitle())
-        .thenReturn(title)
+    whenever(mockVictoryRepository.victoryTitle)
+      .thenReturn(title)
   }
 
   private fun stubVictoryRepositoryGetVictoryCount(count: Int) {
-    whenever(mockVictoryRepository.getVictoryCount())
-        .thenReturn(count)
+    whenever(mockVictoryRepository.victoryCount)
+      .thenReturn(count)
   }
 }
