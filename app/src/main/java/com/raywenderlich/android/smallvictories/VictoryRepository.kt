@@ -30,11 +30,38 @@
  */
 package com.raywenderlich.android.smallvictories
 
+import android.content.Context
+
 interface VictoryRepository {
-  fun getVictoryTitleAndCount(): Pair<String, Int>
-  fun setVictoryTitle(title: String)
-  fun getVictoryTitle(): String
-  fun setVictoryCount(count: Int)
-  fun getVictoryCount(): Int
+  var victoryTitle: String
+  var victoryCount: Int
   fun clear()
+}
+
+open class SharedPreferencesRepository(context: Context) : VictoryRepository {
+
+  companion object {
+
+    private const val PACKAGE_NAME = "com.raywenderlich.android.smallvictories"
+    private const val KEY_VICTORY_TITLE = "victory_title"
+    private const val KEY_VICTORY_COUNT = "victory_count"
+  }
+
+  private val sharedPreferences = context.getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE)
+
+  override var victoryTitle: String
+    get() = sharedPreferences.getString(KEY_VICTORY_TITLE, "Victory title")!!
+    set(title) {
+      sharedPreferences.edit().putString(KEY_VICTORY_TITLE, title).apply()
+    }
+
+  override var victoryCount: Int
+    get() = sharedPreferences.getInt(KEY_VICTORY_COUNT, 0)!!
+    set(count) {
+      sharedPreferences.edit().putInt(KEY_VICTORY_COUNT, count).apply()
+    }
+
+  override fun clear() {
+    sharedPreferences.edit().clear().apply()
+  }
 }

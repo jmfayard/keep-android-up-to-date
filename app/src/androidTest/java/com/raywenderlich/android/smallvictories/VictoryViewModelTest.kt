@@ -81,7 +81,7 @@ class VictoryViewModelTest {
     val title = "New title"
     viewModel.setVictoryTitle(title)
 
-    verify(mockVictoryRepository).setVictoryTitle(title)
+    verify(mockVictoryRepository).victoryTitle = title
   }
 
   @Test
@@ -97,7 +97,7 @@ class VictoryViewModelTest {
     stubVictoryRepositoryGetVictoryCount(5)
     viewModel.incrementVictoryCount()
 
-    verify(mockVictoryRepository).getVictoryCount()
+    verify(mockVictoryRepository).victoryCount
   }
 
   @Test
@@ -106,7 +106,7 @@ class VictoryViewModelTest {
     stubVictoryRepositoryGetVictoryCount(previousCount)
     viewModel.incrementVictoryCount()
 
-    verify(mockVictoryRepository).setVictoryCount(previousCount + 1)
+    verify(mockVictoryRepository).victoryCount = (previousCount + 1)
   }
 
   @Test
@@ -121,17 +121,19 @@ class VictoryViewModelTest {
   private fun stubVictoryRepositoryGetVictoryTitleAndCount(titleAndCount: Pair<String, Int>) {
     stubVictoryRepositoryGetVictoryTitle(titleAndCount.first)
     stubVictoryRepositoryGetVictoryCount(titleAndCount.second)
-    whenever(mockVictoryRepository.getVictoryTitleAndCount())
-        .thenReturn(titleAndCount)
+    whenever(mockVictoryRepository.victoryTitle)
+      .thenReturn(titleAndCount.first)
+    whenever(mockVictoryRepository.victoryCount)
+        .thenReturn(titleAndCount.second)
   }
 
   private fun stubVictoryRepositoryGetVictoryTitle(title: String) {
-    whenever(mockVictoryRepository.getVictoryTitle())
+    whenever(mockVictoryRepository.victoryTitle)
         .thenReturn(title)
   }
 
   private fun stubVictoryRepositoryGetVictoryCount(count: Int) {
-    whenever(mockVictoryRepository.getVictoryCount())
+    whenever(mockVictoryRepository.victoryCount)
         .thenReturn(count)
   }
 }
