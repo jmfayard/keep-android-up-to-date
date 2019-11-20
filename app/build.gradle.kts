@@ -4,9 +4,10 @@ plugins {
   id("com.android.application")
   id("com.louiscad.splitties")
   id("org.jetbrains.kotlin.android")
-  id("kotlin-android-extensions")
   id("org.jetbrains.kotlin.kapt")
 }
+
+apply(plugin = "kotlin-android-extensions")
 
 apply(from = "android.gradle")
 

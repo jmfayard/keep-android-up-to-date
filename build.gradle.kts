@@ -13,11 +13,6 @@ allprojects {
   }
 }
 
-refreshVersions {
-  useFqdnFor("espresso-core", "core-testing", "appcompat", "material", "aapt2", "constraintlayout", "lint-gradle", "annotations")
-  orderBy = OrderBy.GROUP_AND_ALPHABETICAL
-}
-
 buildScan {
   termsOfServiceUrl = "https://gradle.com/terms-of-service"
   termsOfServiceAgree = "yes"

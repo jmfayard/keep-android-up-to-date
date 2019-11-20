@@ -1,9 +1,20 @@
+import de.fayard.versions.setupVersionPlaceholdersResolving
+
 pluginManagement {
   repositories {
-    google()
     gradlePluginPortal()
+    mavenCentral()
+    google()
   }
 }
-apply(from = "gradle/plugins.gradle.kts")
+buildscript {
+  repositories {
+    gradlePluginPortal()
+    mavenCentral()
+  }
+  dependencies.classpath("de.fayard.refreshVersions:de.fayard.refreshVersions.gradle.plugin:0.8.4")
+}
+setupVersionPlaceholdersResolving()
+
 rootProject.name = "legacy-android-project"
 include(":app")
