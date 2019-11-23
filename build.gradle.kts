@@ -27,7 +27,7 @@ tasks.register("hello") {
 tasks.register<Delete>("clean") {
   group = "custom"
   description = "Delete build files"
-  delete = setOf(".gradle", ".idea", "**.iml", "build", "app/build")
+  delete = setOf("build", "app/build")
 }
 
 tasks.register("tests") {
