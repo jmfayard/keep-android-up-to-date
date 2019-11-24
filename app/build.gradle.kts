@@ -1,15 +1,8 @@
-import dependencies.Splitties
-import dependencies.AndroidX
-import dependencies.Google
-import dependencies.Testing
-
-
 plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
   id("org.jetbrains.kotlin.kapt")
   id("de.fayard.dependencies")
-
 }
 
 apply(plugin = "kotlin-android-extensions")
