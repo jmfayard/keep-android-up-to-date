@@ -1,5 +1,3 @@
-import de.fayard.OrderBy
-
 plugins {
   `build-scan`
   id("de.fayard.refreshVersions")
@@ -11,11 +9,6 @@ allprojects {
     google()
     jcenter()
   }
-}
-
-refreshVersions {
-  useFqdnFor("espresso-core", "core-testing", "appcompat", "material", "aapt2", "constraintlayout", "lint-gradle", "annotations")
-  orderBy = OrderBy.GROUP_AND_ALPHABETICAL
 }
 
 buildScan {
