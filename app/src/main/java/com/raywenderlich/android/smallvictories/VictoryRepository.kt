@@ -30,8 +30,6 @@
  */
 package com.raywenderlich.android.smallvictories
 
-import android.content.Context
-import splitties.experimental.ExperimentalSplittiesApi
 import splitties.preferences.Preferences
 
 interface VictoryRepository {
@@ -40,7 +38,6 @@ interface VictoryRepository {
   fun clear()
 }
 
-@ExperimentalSplittiesApi
 object SharedPreferencesRepository : VictoryRepository, Preferences(BuildConfig.APPLICATION_ID) {
   private val defaultTitle = "Project upgraded!"
 

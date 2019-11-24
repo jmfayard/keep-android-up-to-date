@@ -1,7 +1,7 @@
 plugins {
   `build-scan`
-  id("de.fayard.refreshVersions").version("0.8.4")
-  id("com.louiscad.splitties").version("0.1.6")
+  id("de.fayard.refreshVersions")
+  id("com.louiscad.splitties")
 }
 
 allprojects {
