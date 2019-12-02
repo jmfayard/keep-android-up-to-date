@@ -1,5 +1,4 @@
 plugins {
-  `build-scan`
   id("de.fayard.refreshVersions")
   id("com.louiscad.splitties")
 }
@@ -9,12 +8,6 @@ allprojects {
     google()
     jcenter()
   }
-}
-
-buildScan {
-  termsOfServiceUrl = "https://gradle.com/terms-of-service"
-  termsOfServiceAgree = "yes"
-  publishAlways()
 }
 
 tasks.register("hello") {
