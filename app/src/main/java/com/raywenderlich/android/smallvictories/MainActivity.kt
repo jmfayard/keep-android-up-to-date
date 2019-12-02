@@ -35,18 +35,27 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.res.Resources
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.FrameLayout
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
   private lateinit var viewModel: VictoryViewModel
+
+  val fab: FloatingActionButton
+    get() = findViewById(R.id.fab)
+
+  val textVictoryCount: TextView
+    get() = findViewById(R.id.textVictoryCount)
+
+  val textVictoryTitle: TextView
+    get() = findViewById(R.id.textVictoryTitle)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     // Switch to AppTheme for displaying the activity
@@ -54,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    setSupportActionBar(toolbar)
+    setSupportActionBar(findViewById(R.id.toolbar))
 
     viewModel = ViewModelProviders.of(this).get(VictoryViewModel::class.java)
     viewModel.viewState.observe(this, Observer { it ->
