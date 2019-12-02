@@ -14,4 +14,10 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" >
+        <item name="actionMenuTextColor">#FFF</item>
+        <item name="android:textColorPrimary">#FFF</item>
+    </style>
+
+
 </resources>

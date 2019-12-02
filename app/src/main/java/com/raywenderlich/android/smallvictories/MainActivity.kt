@@ -41,13 +41,26 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.FrameLayout
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
   val viewModel: VictoryViewModel
     get() = ViewModelProviders.of(this).get(VictoryViewModel::class.java)
+
+  val toolbar: Toolbar
+      get() = findViewById(R.id.toolbar)
+
+  val fab: FloatingActionButton
+      get() = findViewById(R.id.fab)
+
+  val textVictoryCount: TextView
+      get() = findViewById(R.id.textVictoryCount)
+
+  val textVictoryTitle: TextView
+      get() = findViewById(R.id.textVictoryTitle)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     // Switch to AppTheme for displaying the activity

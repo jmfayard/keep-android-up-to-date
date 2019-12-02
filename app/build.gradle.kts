@@ -5,8 +5,6 @@ plugins {
   id("de.fayard.dependencies")
 }
 
-apply(plugin = "kotlin-android-extensions")
-
 apply(from = "android.gradle")
 
 repositories {
