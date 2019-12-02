@@ -5,8 +5,6 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context=".MainActivity"
-    android:paddingBottom="32dp"
-    android:paddingTop="16dp"
     >
 
   <com.google.android.material.appbar.AppBarLayout
@@ -19,6 +17,7 @@
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
       android:background="?attr/colorPrimary"
+
        />
 
   </com.google.android.material.appbar.AppBarLayout>
