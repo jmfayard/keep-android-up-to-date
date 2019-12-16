@@ -11,7 +11,7 @@ import org.junit.Test
 
 /*
  *
- * Copyright (c) 2018 Razeware LLC
+ * Copyright (c) 2019 Razeware LL
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
