@@ -20,7 +20,7 @@ plugins {
 
 setupVersionPlaceholdersResolving()
 
-rootProject.name = "legacy-android-project"
+rootProject.name = "keep-android-uptodate-final"
 
 include(":app")
 
