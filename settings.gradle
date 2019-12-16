@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = 'legacy-android-project'
+rootProject.name = 'not-up-to-date'
