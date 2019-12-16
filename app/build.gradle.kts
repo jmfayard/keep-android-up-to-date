@@ -38,7 +38,7 @@ dependencies {
 
   androidTestImplementation(AndroidX.test.core)
   androidTestImplementation(AndroidX.archCore.testing)
-  androidTestImplementation(AndroidX.test.runner)
+  androidTestImplementation(AndroidX.test.ext.junit)
   androidTestImplementation(AndroidX.test.rules)
   androidTestImplementation(AndroidX.test.espresso.core)
 }
