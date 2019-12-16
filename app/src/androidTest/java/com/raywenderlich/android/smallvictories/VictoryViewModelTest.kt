@@ -2,14 +2,16 @@ package com.raywenderlich.android.smallvictories
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.Observer
-import com.nhaarman.mockito_kotlin.*
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 /*
  *
- * Copyright (c) 2018 Razeware LLC
+ * Copyright (c) 2019 Razeware LL
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
