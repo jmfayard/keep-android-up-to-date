@@ -51,16 +51,16 @@ class MainActivity : AppCompatActivity() {
     get() = ViewModelProviders.of(this).get(VictoryViewModel::class.java)
 
   val toolbar: Toolbar
-      get() = findViewById(R.id.toolbar)
+    get() = findViewById(R.id.toolbar)
 
   val fab: FloatingActionButton
-      get() = findViewById(R.id.fab)
+    get() = findViewById(R.id.fab)
 
   val textVictoryCount: TextView
-      get() = findViewById(R.id.textVictoryCount)
+    get() = findViewById(R.id.textVictoryCount)
 
   val textVictoryTitle: TextView
-      get() = findViewById(R.id.textVictoryTitle)
+    get() = findViewById(R.id.textVictoryTitle)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     // Switch to AppTheme for displaying the activity
